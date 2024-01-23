@@ -25,9 +25,10 @@ class Command(BaseCommand):
                 products_to_fill.append(Product(name=item['fields']['name'],
                                                 description=item['fields']['description'],
                                                 image=item['fields']['image'],
+                                                category=index_for_products[item['fields']['category']],
                                                 price=item['fields']['price'],
-                                                data_created=item['fields']['data_created'],
-                                                is_active=item['fields']['is_active'],
-                                                category=index_for_products[item['fields']['category']]))
+                                                date_created=item['fields']['date_created'],
+                                                date_modified=item['fields']['date_modified'],
+                                                is_active=item['fields']['is_active']))
         Category.objects.bulk_create(categories_to_fill)
         Product.objects.bulk_create(products_to_fill)
