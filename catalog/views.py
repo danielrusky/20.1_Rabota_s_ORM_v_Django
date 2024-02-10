@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from catalog.models import Contacts, Product
+from catalog.models import *
 
 
 def home(request):
@@ -15,5 +15,5 @@ def contact(request):
         message = request.POST.get('message')
         Contacts.objects.create(name=name, phone=phone, message=message)
         print(f'У вас новое сообщение от: {name}(телефон:{phone}): {message}')
-    return render(request, 'catalog/contacts.html', {'contacts': Contacts.objects.get(pk=1)})
+    return render(request, 'catalog/contacts.html')
 
